@@ -1,5 +1,10 @@
 var registro = require('../schemas/registro');
 var nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey(
+  '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'
+);
 
 exports.registrar = async (req, res) => {
   const registros = new registro({
@@ -16,32 +21,45 @@ exports.registrar = async (req, res) => {
     } else {
       console.log('registro saved');
 
-      var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        port: 465,
-        auth: {
-          user: 'hondutronics.sac@gmail.com',
-          pass: 'mswa2018hdc'
-        }
-      });
+      // var transporter = nodemailer.createTransport({
+      //   service: 'smtp.gmail.com',
+      //   // port: 465,
+      //   secure: false,
+      //   auth: {
+      //     user: 'hondutronics.sac@gmail.com',
+      //     pass: 'mswa2018hdc'
+      //   }
+      // });
 
-      var mailOptions = {
-        from: 'hondutronics.sac@gmail.com',
+      // var mailOptions = {
+      //   from: 'hondutronics.sac@gmail.com',
+      //   to: 'hondutronics.sac@gmail.com',
+      //   subject: 'Cotizacion ' + registros.nombre,
+      //   text: `Nombre: ${registros.nombre}
+      //    Correo: ${registros.correo}
+      //    Numero: ${registros.numero}
+      //    Productos: ${registros.producto}`
+      // };
+
+      // transporter.sendMail(mailOptions, function(error, info) {
+      //   if (error) {
+      //     console.log(error);
+      //   } else {
+      //     console.log('Email sent: ' + info.response);
+      //   }
+      // });
+
+      const msg = {
         to: 'hondutronics.sac@gmail.com',
+        from: 'hondutronics.sac@gmail.com',
         subject: 'Cotizacion ' + registros.nombre,
         text: `Nombre: ${registros.nombre}
-         Correo: ${registros.correo}
-         Numero: ${registros.numero}
-         Productos: ${registros.producto}`
+        Correo: ${registros.correo}
+        Numero: ${registros.numero}
+        Productos: ${registros.producto}`
       };
 
-      transporter.sendMail(mailOptions, function(error, info) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
+      sgMail.send(msg);
 
       saved = true;
       return 'saved';
