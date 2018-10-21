@@ -57,6 +57,9 @@ exports.registrar = async (req, res) => {
         Productos: ${registros.producto}`
       };
 
+      console.log(msg);
+      console.log(process.env.sendgridKEY);
+
       sgMail.send(msg);
 
       saved = true;
