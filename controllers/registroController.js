@@ -2,9 +2,7 @@ var registro = require('../schemas/registro');
 var nodemailer = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
 
-sgMail.setApiKey(
-  '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'
-);
+sgMail.setApiKey(process.env.sendgridKEY);
 
 exports.registrar = async (req, res) => {
   const registros = new registro({
