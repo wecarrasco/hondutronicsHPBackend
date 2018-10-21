@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Hondutronics Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Walther Carrasco",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "boom": "^7.2.0",
+    "hapi": "^17.6.0",
+    "hapi-auth-cookie": "^9.0.0",
+    "hapi-cors-headers": "^1.0.3",
+    "hapi-mongodb": "^7.1.0",
+    "inert": "^5.1.0",
+    "joi": "^14.0.0",
+    "mongoose": "^5.3.4",
+    "mongoose-unique-validator": "^2.0.2"
+  }
+}
