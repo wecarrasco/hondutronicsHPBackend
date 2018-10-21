@@ -4,7 +4,8 @@ exports.registrar = async (req, res) => {
   const registros = new registro({
     nombre: req.payload.nombre,
     numero: req.payload.numero,
-    correo: req.payload.correo
+    correo: req.payload.correo,
+    producto: req.payload.producto
   });
 
   const resp = await registros.save((err) => {
