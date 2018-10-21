@@ -19,6 +19,7 @@
     "inert": "^5.1.0",
     "joi": "^14.0.0",
     "mongoose": "^5.3.4",
-    "mongoose-unique-validator": "^2.0.2"
+    "mongoose-unique-validator": "^2.0.2",
+    "nodemailer": "^4.6.8"
   }
 }
